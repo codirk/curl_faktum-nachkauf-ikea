@@ -1,0 +1,15 @@
+#!/bin/bash
+#curl --silent https://www.faktum-nachkauf-ikea.de/products/filter/category/Korpen-Regale-Einlegeb%C3%B6den/page/2 |grep 'class="button pull-right"'|sed -e 's/^.*<a href=["'"'"']//' -e 's/["'"'"'].*$//'|while read line;
+echo $1
+cat $1 |while read line;
+do echo -n $line;
+#echo curl --silent "https://www.faktum-nachkauf-ikea.de$line"|grep --quiet 'In den Warenkorb' && echo -n " -->lieferbar"
+curl --silent "$line"|grep --quiet 'In den Warenkorb' && echo -n " -->lieferbar"
+echo
+done
+
+#curl --silent https://www.faktum-nachkauf-ikea.de/product/show/rationell-messerfach-buche
+
+
+#curl --silent https://www.faktum-nachkauf-ikea.de/product/show/rationell-messerfach-buche|grep --quiet 'In den Warenkorb' && echo lieferbar
+#curl --silent "https://www.faktum-nachkauf-ikea.de/product/show/faktum-korpus-wandschrank-weiss-6"|grep 'In den Warenkorb'|grep --quiet 'In den Warenkorb' || echo nicht da
